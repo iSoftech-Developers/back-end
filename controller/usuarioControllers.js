@@ -20,14 +20,16 @@ const consultarOCrearUsuario = (request, response) => {
     }else{
       user.auth0ID = user._id;
       delete user._id;
-      user.rol = 'sin rol';
+      user.rol = 'Sin Rol';
       user.estado = 'Pendiente';
       postUsuariosAuth0(user,response); 
     }
+  }).then(() => {
+    response.sendStatus(201)
+  }).catch(err => {
+    console.error(err)
   })
   
-    
-   
       // 7.2. si el usuario no esta en la bd, lo crea y devuelve la info
  
       
@@ -45,7 +47,8 @@ const postUsuariosAuth0 = async(request, response)=>{
     })
    await  usuario.save()
     .then(() => {
-      response.sendStatus(201)
+        response.sendStatus(401)
+        response.end();
     }).catch(err => {
       console.error(err)
     })
