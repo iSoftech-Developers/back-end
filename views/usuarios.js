@@ -16,7 +16,7 @@ const genercCallback = (res) => (err, result) => {
 };
 
 rutasUsuarios.route('/usuarios/self').get((req, res) => {
-  console.log('alguien hizo get en la ruta /self');
+
   consultarOCrearUsuario(req,res);
   // consultarUsuario(, genercCallback(res));
 });

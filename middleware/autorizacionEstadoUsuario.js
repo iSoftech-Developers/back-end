@@ -5,12 +5,10 @@ const autorizacionEstadoUsuario = async (req, res, next) => {
   // paso 1: obtener el usuario desde el token
   const token = req.headers.authorization.split('Bearer ')[1];
   const user = jwt_decode(token)['http://localhost/userData'];
-  console.log(user);
 
   // paso 2: consultar el usuario en la BD
    Usuario.findOne({ field3: user.email },function (err, response) {
     if (response) {
-      console.log(response);
       // paso 3: verificar el estado del usuario.
       if (response.field7 === 'Rechazado' && response.field7==='Pendiente') {
         // paso 4: si el usuario es rechazado, devolver un error de autenticacion.

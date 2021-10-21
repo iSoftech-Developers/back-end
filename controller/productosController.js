@@ -58,6 +58,25 @@ const deleteProductos = async (id,response)=>{
 
 
 
+const patchProductosStock =  (request,response)=>{
+  
+  request.forEach(v=>{
+    Producto.findByIdAndUpdate(v._id, {
+      field3:(v.field3 - parseInt(v.cantidad)),
+  })
+  .then(() => {
+    console.log('cambio cantidad ok')
+  }).catch(err => {
+    console.error(err)
+  })
+ })
+
+  
+    
+}
 
 
-export {getProductos,postProductos ,patchProductos, deleteProductos};
+
+
+
+export {getProductos,postProductos ,patchProductos, deleteProductos ,patchProductosStock};
