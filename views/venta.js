@@ -1,6 +1,7 @@
 import Express from 'express'
 import Venta from '../models/venta.js';
 
+import {patchProductosStock} from '../controller/productosController.js'
 
 
 
@@ -17,12 +18,14 @@ rutasVenta.route('/venta/').post((request,response)=>{
         cliente:request.body.cliente,
 
       })
+      patchProductosStock(request.body.productos)
       venta.save()
       .then(() => {
         response.sendStatus(201)
       }).catch(err => {
         console.error(err)
       })
+      
 })
 
 rutasVenta.route('/venta/').get((request,response)=>{

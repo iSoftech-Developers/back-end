@@ -26,7 +26,7 @@ const consultarOCrearUsuario = (request, response) => {
     }
   })
   
-    console.log('response consulta bd', response)
+    
    
       // 7.2. si el usuario no esta en la bd, lo crea y devuelve la info
  
@@ -34,7 +34,6 @@ const consultarOCrearUsuario = (request, response) => {
 };
 
 const postUsuariosAuth0 = async(request, response)=>{
-  console.log(request)
   const usuario = new Usuario({
       field7:request.estado,
       field1:request.name,
